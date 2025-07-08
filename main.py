@@ -42,14 +42,14 @@ def upload_to_drive(filepath, filename):
 
     return f"https://drive.google.com/file/d/{file['id']}/view"
 
-# Create PDF from images
+
 def create_pdf(image_paths, output_pdf):
     pdf = FPDF()
     temp_files = []
 
     for img_path in image_paths:
         with Image.open(img_path) as img:
-            # Convert to RGB and save as temporary PNG
+            
             rgb_img = img.convert("RGB")
             temp_path = os.path.join(UPLOAD_FOLDER, f"{uuid4().hex}.png")
             rgb_img.save(temp_path, "PNG")
@@ -61,7 +61,7 @@ def create_pdf(image_paths, output_pdf):
 
     pdf.output(output_pdf)
 
-    # Clean up temporary PNGs
+    
     for temp_file in temp_files:
         if os.path.exists(temp_file):
             os.remove(temp_file)
