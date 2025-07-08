@@ -1,0 +1,108 @@
+*{
+margin: 0%;
+padding: 0%;
+box-sizing: border-box;
+}
+body{
+background: rgb(38, 38, 38);
+}
+#main{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.buttons{
+    margin: 0.3125rem;
+    width: 25rem;
+    height: 25rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2rem;
+    background: linear-gradient(135deg,rgb(232, 14, 50),rgb(7, 49, 187));
+}
+.buttons button{
+    background: #fff;
+    color: #333;
+    border: 0;
+    outline: 0;
+    width: 7.5rem;
+    height: 2.5rem;
+    margin: 0.3125rem;
+    cursor: pointer;
+    border-radius: 1rem;
+}
+.buttons button:hover{
+    box-shadow: 0 0.2rem 0 0.2rem rgba(0,0,0,0.3);
+    font-size: 1rem;
+    font-weight: 600;
+}
+#toastBox{
+    position: absolute;
+    bottom: 1.875rem;
+    right: 1.875rem;
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+    overflow: hidden;
+    padding: 1.25rem;
+}
+.toast{
+    width: 25rem;
+    height: 5rem;
+    background: #fff;
+    font-weight: 500;
+    margin: 0.75rem 0;
+    box-shadow: 0 0 1.25rem rgba(0,0,0,0.3);
+    display: flex;
+    align-items: center;
+    transform: translateX(100%);
+    animation: moveleft 0.5s linear forwards;
+    border-radius: 0.3125rem;
+    border: 0;
+    outline: 0;
+    opacity: 0;
+}
+@keyframes moveleft{
+    0%{
+        transform: translate(100%);
+        opacity: 0;
+    }
+    100%{
+        transform: translate(0);
+        opacity: 1;
+    }
+}
+.toast i{
+    margin:0 1.25rem;
+    font-size: 2.1875rem;
+    color: green;
+}
+.toast.error i{
+    color: red;
+}
+.toast.invalid i{
+    color: orange;
+}
+.toast::after{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 0.3125rem;
+    background: green;
+    animation: anim 5s linear forwards;
+}
+@keyframes anim{
+    100%{
+        width:0 ;
+    }
+}
+.toast.error::after{
+    background: red;
+}
+.toast.invalid::after{
+    background: orange;
+}
