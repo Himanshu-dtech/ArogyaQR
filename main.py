@@ -13,28 +13,28 @@ from googleapiclient.http import MediaFileUpload
 
 app = Flask(__name__)
 
-# Configuration
+
 UPLOAD_FOLDER = 'uploads'
 PDF_PATH = 'output.pdf'
 QR_PATH = 'static/qr.png'
 CREDENTIALS_FILE = 'credentials.json'
 
-# Ensure folders exist
+
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 os.makedirs('static', exist_ok=True)
 
-# Google Drive Authentication
+
 SCOPES = ['https://www.googleapis.com/auth/drive.file']
 creds = service_account.Credentials.from_service_account_file(CREDENTIALS_FILE, scopes=SCOPES)
 drive_service = build('drive', 'v3', credentials=creds)
 
-# Upload file to Google Drive
+
 def upload_to_drive(filepath, filename):
     file_metadata = {'name': filename}
     media = MediaFileUpload(filepath, resumable=True)
     file = drive_service.files().create(body=file_metadata, media_body=media, fields='id').execute()
 
-    # Make file public
+    
     drive_service.permissions().create(
         fileId=file['id'],
         body={'type': 'anyone', 'role': 'reader'}
