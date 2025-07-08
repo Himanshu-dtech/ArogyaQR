@@ -12,7 +12,8 @@ import {
 import {
   getFirestore,
   doc,
-  setDoc
+  setDoc,
+  getDoc
 } from 'https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js';
 
 // ✅ Your Firebase config
@@ -103,17 +104,31 @@ document.getElementById('loginBtn').addEventListener('click', async () => {
     alert("Login failed: " + error.message);
   }
 });
-
-// 🔐 Google Login
+// 🔐 Google Login with Firestore check
 document.getElementById('googleLogin').addEventListener('click', async () => {
   try {
-    await signInWithPopup(auth, provider);
-    alert("Google login successful!");
-    window.location.href = "dashboard.html";
+    const result = await signInWithPopup(auth, provider);
+    const user = result.user;
+
+    const userDocRef = doc(db, "users", user.uid);
+    const userDocSnap = await getDoc(userDocRef);
+
+    if (userDocSnap.exists()) {
+      alert("Welcome back!");
+      window.location.href = "dashboard.html";
+    } else {
+      alert("Please complete signup.");
+      // You can redirect to Google details form or show it again
+      document.getElementById("container").style.display = "none";
+      document.getElementById("googleDetailsForm").style.display = "flex";
+      tempGoogleUser = user;
+    }
+
   } catch (error) {
     alert("Google login failed: " + error.message);
   }
 });
+
 //Submit Form
 document.getElementById("googleExtraForm").addEventListener("submit", async (e) => {
   e.preventDefault();
