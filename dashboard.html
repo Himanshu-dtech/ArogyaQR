@@ -1,56 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet"href="dashboard.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="dashboard.css">
 </head>
 <body>
-    <div class="dashboard">
-    <div class="sidebar">
-      <h2>Aarogya QR</h2>
-      <a href="#profile">👤 Profile</a>
-      <a href="#records">📁 Medical Records</a>
-      <a href="#appointments">📅 Appointments</a>
-      <a href="#qr">🔳 My QR</a>
-      <a href="#logout">🚪 Logout</a>
-        <button onclick="window.open('http://127.0.0.1:5000', '_blank')">
-  QR Generator
-</button>
-    </div>
-    <div class="main-content">
-      <div class="card" id="profile">
-        <h3>Profile</h3>
-        <div class="profile-info">
-          <img src="https://img.icons8.com/color/100/000000/user-male-circle--v1.png" alt="Profile Photo">
-          <div class="details">
-            <p><strong>Name:</strong> Rishita Baranwal</p>
-            <p><strong>Age:</strong> 21</p>
-            <p><strong>Gender:</strong> Female</p>
-            <p><strong>Blood Group:</strong> B+</p>
+  <div class="dashboard">
+    <aside class="sidebar">
+      <button class="nav-btn">👤 Profile</button>
+      <button class="nav-btn">🔳 QR</button>
+      <button class="nav-btn">📈 BMI</button>
+      <button class="nav-btn">💡 Tips</button>
+      <button id="logoutBtn">🚪 Logout</button>
+      <button id="toggleMode">🌙 Toggle Mode</button>
+    </aside>
+
+    <main class="main">
+      <section id="profile">
+        <h2>👤 Profile</h2>
+        <div class="profile-container">
+          <img id="profilePic" src="default.jpg" alt="Profile">
+          <label for="uploadBtn" class="upload-label">📤 Upload</label>
+          <input type="file" id="uploadBtn" style="display: none;">
+          <div class="info">
+            <p>👤 Name: <span id="nameField"></span></p>
+            <p>🎂 Age: <span id="ageField"></span></p>
+            <p>🩸 Blood Group: <span id="bloodField"></span></p>
           </div>
         </div>
-      </div>
+      </section>
 
-      <div class="card" id="records">
-        <h3>Medical Records</h3>
-        <ul class="record-list">
-          <li>📝 Prescription - 20th May 2025</li>
-          <li>🧪 Blood Report - 15th May 2025</li>
-          <li>🩻 X-ray - 2nd April 2025</li>
-        </ul>
-      </div>
-
-
-      <div class="card" id="qr">
-        <h3>Your QR Code</h3>
-        <div class="qr-container">
-          <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=AarogyaQR_User_123" alt="QR Code" />
-          <p>Scan to access your health record</p>
+      <section id="qr">
+        <h2>🔳 Your QR</h2>
+        <div class="qr-box">
+          <img src="qr-placeholder.png" alt="QR Code">
+          <button>📥 Download</button>
+          <button>♻️ Generate</button>
         </div>
-      </div>
-    </div>
-    </div>
+      </section>
+
+      <section id="bmi">
+        <h2>📈 BMI Calculator</h2>
+        <input type="number" id="weight" placeholder="Weight">
+        <input type="number" id="height" placeholder="Height">
+        <select id="unit">
+          <option value="metric">Metric (kg/cm)</option>
+          <option value="imperial">Imperial (lbs/in)</option>
+        </select>
+        <button onclick="calculateBMI()">Calculate</button>
+        <p id="bmiResult"></p>
+      </section>
+
+      <section id="tips">
+        <h2>💡 Healthy Tip</h2>
+        <p id="healthTip"></p>
+      </section>
+    </main>
+  </div>
+  
+  <script type="module" src="dashboard.js"></script>
 </body>
 </html>
