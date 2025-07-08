@@ -51,6 +51,7 @@ document.getElementById('googleSignup').addEventListener('click', async () => {
       document.getElementById("googleDetailsForm").style.display = "flex";
     } else {
       alert("Welcome back!");
+      window.location.href = "dashboard.html";
     }
   } catch (error) {
     alert("Google signup failed: " + error.message);
