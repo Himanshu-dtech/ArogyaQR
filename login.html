@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login / Signup</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: 'Nunito', sans-serif;
+    }
+  </style>
+</head>
+<body>
+  <div class="container" id="container">
+     <!-- SIGN UP FORM -->
+    <div class="form-container sign-up-container">
+      <form>
+        <h2>Create Account</h2>
+        <button type="button" id="googleSignup" class="google-btn">
+          <img src="https://developers.google.com/identity/images/g-logo.png" alt="Google logo" class="google-icon">
+          Sign Up with Google
+        </button>
+        <span>or use your email for registration</span>
+        <input type="text" id="firstName" placeholder="First Name" required>
+        <input type="tel" id="phone" placeholder="Phone Number" required>
+        <input type="number" id="age" placeholder="Age" required>
+        <input type="text" id="bloodGroup" placeholder="Blood Group" required>
+        <input type="email" id="email" placeholder="Email" required>
+        <div style="position: relative; width: 100%;">
+          <input type="password" id="password" placeholder="Password" required>
+          <span class="toggle-password" onclick="togglePassword('password')" style="position: absolute; right: 1rem; top: 0.8rem; cursor: pointer;">👁️</span>
+        </div>
+        <div class="button-wrapper">
+          <button type="button" id="signupBtn">Sign Up</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- LOGIN FORM -->
+    <div class="form-container sign-in-container">
+      <form>
+        <h2>Sign In</h2>
+        <button type="button" id="googleLogin" class="google-btn">
+          <img src="https://developers.google.com/identity/images/g-logo.png" alt="Google logo" class="google-icon">
+          Login with Google
+        </button>
+        <span>or use your email account</span>
+        <input type="email" id="loginEmail" placeholder="Email" required>
+        <div style="position: relative; width: 100%;">
+        <input type="password" id="loginPassword" placeholder="Password" required>
+        <span class="toggle-password" onclick="togglePassword('loginPassword')" style="position: absolute; right: 1rem; top: 0.8rem; cursor: pointer;">👁️</span>
+        </div>
+        <p style="margin-top: 0.5rem;">
+          <a href="#" id="forgotPasswordBtn" style="font-size: 0.9rem;">Forgot Password?</a>
+        </p>
+        <button type="button" id="loginBtn">Login</button>
+      </form>
+    </div>
+
+    <!-- OVERLAY SWITCH PANEL -->
+    <div class="overlay-container">
+      <div class="overlay">
+        <div class="overlay-panel overlay-left">
+          <h3>Welcome Back!</h3>
+          <p>To keep connected with us, please login</p>
+          <button class="ghost" id="signIn">Sign In</button>
+        </div>
+        <div class="overlay-panel overlay-right">
+          <h3>Hello, Friend!</h3>
+          <p>Enter your personal details and start your journey</p>
+          <button class="ghost" id="signUp">Sign Up</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div id="googleDetailsForm" style="display: none;" class="form-container">
+  <form id="googleExtraForm">
+    <h2>Complete Your Profile</h2>
+    <input type="text" id="googleName" placeholder="Name" required>
+    <input type="tel" id="googlePhone" placeholder="Phone Number" required>
+    <input type="number" id="googleAge" placeholder="Age" required>
+    <input type="text" id="googleBloodGroup" placeholder="Blood Group" required>
+    <button type="submit">Submit</button>
+  </form>
+</div>
+
+
+  <script type="module" src="script.js"></script>
+</body>
+</html>
