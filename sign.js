@@ -83,6 +83,7 @@ document.getElementById('signupBtn').addEventListener('click', async () => {
     });
 
     alert("Signup successful!");
+    window.location.href = "dashboard.html";
   } catch (error) {
     alert("Signup failed: " + error.message);
   }
@@ -96,6 +97,7 @@ document.getElementById('loginBtn').addEventListener('click', async () => {
   try {
     await signInWithEmailAndPassword(auth, email, password);
     alert("Login successful!");
+    window.location.href = "dashboard.html";
   } catch (error) {
     alert("Login failed: " + error.message);
   }
@@ -106,6 +108,7 @@ document.getElementById('googleLogin').addEventListener('click', async () => {
   try {
     await signInWithPopup(auth, provider);
     alert("Google login successful!");
+    window.location.href = "dashboard.html";
   } catch (error) {
     alert("Google login failed: " + error.message);
   }
@@ -130,7 +133,7 @@ document.getElementById("googleExtraForm").addEventListener("submit", async (e) 
     });
 
     alert("Signup successful! Welcome " + name);
-    location.reload(); // You can change this to redirect instead
+    window.location.href = "dashboard.html"; // You can change this to redirect instead
   } catch (error) {
     alert("Error saving details: " + error.message);
   }
