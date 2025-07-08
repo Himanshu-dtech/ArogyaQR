@@ -1,0 +1,73 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  background-color: #f5f9ff;
+  color: #0a2540;
+  overflow-x: hidden;
+}
+.landing-pg{
+  position: relative;
+  height: 100vh;
+  width: 100%;
+}
+header {
+  padding: 1.5rem 2rem;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+.logotext {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #1a73e8;
+  animation: fadeInLeft 1s ease-out;
+}
+.nav-buttons a {
+  margin-left: 1rem;
+  text-decoration: none;
+  padding: 0.6rem 1.2rem;
+  background-color: #1a73e8;
+  color: white;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: background-color 0.3s, transform 0.3s;
+  animation: fadeInRight 1s ease-out;
+}
+.nav-buttons a:hover {
+  background-color: #125abf;
+  transform: translateY(-2px);
+}
+.hero {
+  padding: 4rem 2rem;
+  text-align: center;
+  animation: fadeInUp 1.5s ease-out;
+  position: relative;
+}
+.hero h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+.hero p {
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 2rem;
+}
+.hero img {
+  max-width: 300px;
+  margin-bottom: 2rem;
+  animation: popIn 1s ease-out;
+}
+.logo img{
+  max-width: 180px;
+  margin-bottom: 1.5rem;
+  filter: drop-shadow(6px 6px 10px #d9d9d9);
+}
+
