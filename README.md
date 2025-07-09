@@ -50,7 +50,7 @@
 ## 📦 How to Run
 
 1. Download or clone this repo
-2. Open `index.html` in a browser
+2. Open `landingpage.html` in a browser
 3. (Optional) Connect Firebase for full functionality
 
 ---
