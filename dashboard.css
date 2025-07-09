@@ -49,9 +49,11 @@ h2 {
   cursor: pointer;
   transition: all 0.3s ease;
   text-align: left;
+  box-shadow:  2px 2px 3px 3px #878484;
 }
 .sidebar button:hover {
   background: #e0e7ff;
+  scale: 1.05;
 }
 body.dark .sidebar {
   background: #111827;
@@ -68,14 +70,16 @@ body.dark .sidebar button:hover {
   flex: 1;
   padding: 2rem;
   overflow-y: auto;
+  
 }
+
 
 section {
   margin-bottom: 3rem;
   background: white;
   padding: 1.5rem;
   border-radius: 12px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.05);
   transition: background 0.3s;
 }
 body.dark section {
@@ -87,6 +91,10 @@ body.dark section {
   display: flex;
   gap: 2rem;
   align-items: center;
+}
+.photo{
+  display: flex;
+  flex-direction: column;
 }
 #profilePic {
   width: 100px;
@@ -144,6 +152,7 @@ body.dark canvas {
 }
 .qr-box button:hover {
   background: #2563eb;
+  scale: 1.03;
 }
 
 /* === BMI Section === */
