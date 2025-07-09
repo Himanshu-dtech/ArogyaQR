@@ -54,6 +54,9 @@
 3. (Optional) Connect Firebase for full functionality
 
 ---
+## 🌐 Demo video
+
+> [Click to Watch Demo] https://drive.google.com/drive/folders/1HSRk8oQWReaWdCzfy2mlUfeJTa0880fD
 
 ## 👨‍💻 Team Intellicore
 
