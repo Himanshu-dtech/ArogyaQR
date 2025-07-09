@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AAROGYAQR - Upload History</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f1f5f9;
+      padding: 40px;
+      margin: 0;
+      color: #0f172a;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+      color: #1e40af;
+      margin-bottom: 30px;
+    }
+
+    .record {
+      padding: 15px;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    .record:last-child {
+      border-bottom: none;
+    }
+
+    .record img {
+      width: 100px;
+      height: auto;
+      margin-top: 10px;
+    }
+
+    .description {
+      font-weight: 600;
+      color: #334155;
+    }
+
+    .pdf-link {
+      color: #2563eb;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .pdf-link:hover {
+      text-decoration: underline;
+    }
+
+    .back-link {
+      display: block;
+      margin-top: 30px;
+      text-align: center;
+      text-decoration: none;
+      color: #1d4ed8;
+      font-weight: 500;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+
+    .delete-btn {
+      margin-top: 10px;
+      background: #dc2626;
+      color: white;
+      border: none;
+      padding: 6px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .delete-btn:hover {
+      background: #b91c1c;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>📜 Upload History</h1>
+    <div id="historyList"></div>
+    <a class="back-link" href="/">⬅️ Back to Upload Page</a>
+  </div>
+
+  <script>
+    async function loadHistory() {
+      const res = await fetch('/history.json');
+      const data = await res.json();
+      const container = document.getElementById('historyList');
+
+      if (data.length === 0) {
+        container.innerHTML = "<p>No uploads yet.</p>";
+        return;
+      }
+
+      data.reverse().forEach(item => {
+        const div = document.createElement('div');
+        div.className = 'record';
+        div.innerHTML = `
+          <p><strong>👤 Name:</strong> ${item.name || 'N/A'}</p>
+          <p><strong>🎂 Age:</strong> ${item.age || 'N/A'}</p>
+          <p class="description">📝 ${item.description}</p>
+          <img src="${item.qrPath}" alt="QR Code"><br>
+          <a class="pdf-link" href="${item.htmlUrl}" target="_blank">🖼️ View Uploaded Images</a><br>
+          <button class="delete-btn" onclick="deleteRecord('${item.qrPath}')">🗑️ Delete</button>
+        `;
+        container.appendChild(div);
+      });
+    }
+
+    function deleteRecord(qrPath) {
+      if (!confirm("Are you sure you want to delete this record?")) return;
+
+      fetch('/delete', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ qrPath })
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          alert("Deleted successfully.");
+          location.reload();
+        } else {
+          alert("Error deleting record.");
+        }
+      });
+    }
+
+    loadHistory();
+  </script>
+</body>
+</html>
