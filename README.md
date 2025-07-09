@@ -39,11 +39,11 @@
 ---
 
 ## 📂 Folder Structure
-1.Landing page
-2.Login page
-3.Dashboard 
-4.Generate QR
-5.History
+1. Landing page
+2. Login page
+3. Dashboard
+4. Generate QR
+5. History
 
 ---
 
