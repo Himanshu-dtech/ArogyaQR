@@ -9,13 +9,15 @@
 <body>
   <div class="dashboard">
     <aside class="sidebar">
-      <button class="nav-btn">👤 Profile</button>
-      <button class="nav-btn">🔳 QR</button>
-      <button class="nav-btn">📈 BMI</button>
-      <button class="nav-btn">💡 Tips</button>
-      <button id="logoutBtn">🚪 Logout</button>
-      <button id="toggleMode">🌙 Toggle Mode</button>
-    </aside>
+  <div class="logo">🩺 ArogyaQR</div>
+  <button class="nav-btn">👤 Profile</button>
+  <button class="nav-btn">🧾 QR Generator</button>
+  <button class="nav-btn">📜 History</button>
+  <button class="nav-btn">📈 BMI</button>
+  <button class="nav-btn">💡 Tips</button>
+  <button id="logoutBtn">🚪 Logout</button>
+  <button id="toggleMode">🌙 Toggle Mode</button>
+</aside>
 
     <main class="main">
       <section id="profile">
@@ -37,7 +39,7 @@
         <div class="qr-box">
           <img src="qr-placeholder.png" alt="QR Code">
           <button>📥 Download</button>
-          <button>♻️ Generate</button>
+          <button>♻ Generate</button>
         </div>
       </section>
 
@@ -57,6 +59,15 @@
         <h2>💡 Healthy Tip</h2>
         <p id="healthTip"></p>
       </section>
+      <section id="history">
+  <h2>📜 History</h2>
+  <ul>
+    <li>Uploaded Blood Report - 10 July 2025</li>
+    <li>Generated QR - 09 July 2025</li>
+    <li>Uploaded Prescription - 08 July 2025</li>
+  </ul>
+</section>
+
     </main>
   </div>
   
